@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Streaming Demo</title>
+</head>
+<body>
+    <h1>WebSocket Streaming</h1>
+    <div id="stream-data"></div>
+
+    <script>
+        const ws = new WebSocket("ws://127.0.0.1:8000/ws/stream");
+        const streamDiv = document.getElementById("stream-data");
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data); // Parse the JSON data
+            const newDiv = document.createElement("div");
+            newDiv.textContent = `Chunk ${data.chunk_number}: ${data.message}`;
+            streamDiv.appendChild(newDiv);
+        };
+
+        ws.onclose = () => {
+            const newDiv = document.createElement("div");
+            newDiv.textContent = "Connection closed by the server.";
+            streamDiv.appendChild(newDiv);
+        };
+
+        ws.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+    </script>
+</body>
+</html>

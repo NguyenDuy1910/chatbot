@@ -1,0 +1,21 @@
+
+weaviate:
+  url: "http://localhost:8080"
+  grpc_url: "localhost:9091"
+  prefer_grpc: true
+  collection: "Document"
+  overwrite_index: false
+  schema:
+    class: "Document"
+    properties:
+      - name: "docid"
+        dataType: ["int"]
+      - name: "text"
+        dataType: ["text"]
+      - name: "law_number"
+        datatype: ["int"]
+    vectorIndexConfig:
+      distance: "cosine"
+  search_params:
+    hnsw_ef: 512
+    ef_search: 512

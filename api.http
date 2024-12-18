@@ -1,0 +1,81 @@
+### Search Endpoint: /search
+POST http://localhost:8000/search HTTP/1.1
+Content-Type: application/json
+
+{
+  "query": "chức tôn giáo trực thuộc được Nhà nước giao đất không thu tiền sử dụng đất có quyền và nghĩa vụ chung quy định tại Điều 26 và Điều 31 của Luật này. Tổ chức trong nước, tổ chức tôn giáo, tổ chức tôn giáo trực thuộc được Nhà nước giao đất không thu tiền sử dụng đất không có quyền chuyển đổi, chuyển nhượng, tặng cho, cho thuê quyền sử dụng đất, thế chấp, góp vốn bằng quyền sử dụng đất"
+}
+
+### Add Document Endpoint: /add
+POST http://localhost:8000/add HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 101,
+  "text": "New breakthrough in quantum computing announced today."
+}
+
+### Update Document Endpoint: /update
+PUT http://localhost:8000/update HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": "05122c5b-91cc-5ec7-ad0d-f80f60d93766",
+  "text": "Quantum computing breakthrough has made significant progress."
+}
+
+### Delete Document Endpoint: /delete
+DELETE http://localhost:8000/delete/101 HTTP/1.1
+
+### SQL Query Endpoint: /sql
+POST http://localhost:8000/sql HTTP/1.1
+Content-Type: application/json
+
+{
+  "query": "FIFA faces backlash over decision to host World Cup in extreme weather region"
+}
+
+
+###
+
+# curl -X POST http://localhost:8080/v1/graphql
+#-H "Content-Type: application/json"
+#-d '{"query": "{ Aggregate { Document { meta { count } } } }"}'
+POST http://localhost:8080/v1/graphql
+Content-Type: application/json
+
+{
+  "query": "{ Aggregate { LegalDocumentCollection { meta { count } } } }"
+}
+
+###
+
+
+# curl -X POST "http://127.0.0.1:8000/search"
+#-H "Content-Type: application/json"
+#-d '{
+#  "query": "Luật nhà đất hiện nay",
+#  "certainty": 0.73
+#}'
+
+
+
+
+POST http://127.0.0.1:8000/search
+Content-Type: application/json
+
+{
+  "query": "điều 13 quyền của đại diện chủ sở hữu về đất đai 1 quyết định quy hoạch sử dụng đất kế hoạch sử dụng đất 10 công báosố 1011 1012ngày 31 12 2013 2 quyết định mục đích sử dụng đất 3 quy định hạn mức sử dụng đất thời hạn sử dụng đất 4 quyết định thu hồi đất trưng dụng đất 5 quyết định giá đất 6 quyết định trao quyền sử dụng đất cho người sử dụng đất 7",
+  "certainty": 0.97
+}
+
+###
+
+# curl -X DELETE "http://localhost:8000/schema"
+DELETE http://localhost:8000/schema
+
+###
+
+
+
+###
